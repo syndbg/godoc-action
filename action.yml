@@ -1,5 +1,5 @@
 name: 'GoDoc Action'
-description: 'Automated GoDoc generator & publisher'
+description: '[Go 1.20] Automated GoDoc generator & publisher'
 runs:
   using: 'docker'
   image: 'Dockerfile'
