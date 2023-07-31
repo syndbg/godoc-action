@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eo pipefail
+set -eox pipefail
 
 cd "$(dirname "$(find . -name 'go.mod' | head -n 1)")" || exit 1
 
@@ -13,7 +13,7 @@ cp -r * "$GOPATH/src/github.com/$GITHUB_REPOSITORY"
 (cd /tmp && godoc -http localhost:8080 &)
 
 for (( ; ; )); do
-  sleep 0.5
+  sleep 1
   if [[ $(curl -so /dev/null -w '%{http_code}' "http://localhost:8080/pkg/$MODULE_ROOT/") -eq 200 ]]; then
     break
   fi
