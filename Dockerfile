@@ -1,7 +1,10 @@
 FROM golang:1.20.6-alpine3.18
 
 ENV GOPATH /
-RUN go install golang.org/x/tools/cmd/godoc@latest
+
 COPY ./main.bash /bin/main.bash
+
+RUN apk add --no-cache bash \
+  && go install golang.org/x/tools/cmd/godoc@latest
 
 CMD ["/bin/main.bash"]
